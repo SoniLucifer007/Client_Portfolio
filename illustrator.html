@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Illustrator Projects</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the Illustrator gallery */
+        .gallery img {
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .lightbox {
+            display: none;
+            /* hidden by default */
+            position: fixed;
+            z-index: 50;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white">
+
+    <!-- Navbar -->
+    <header class="flex justify-between items-center p-6 bg-gray-800 shadow-md">
+        <h1 class="text-2xl font-bold cursor-pointer" onclick="location.href='index.html'">Aryan Baria</h1>
+        <button onclick="toggleDarkMode()" class="bg-gray-700 px-4 py-2 rounded-lg">Toggle Mode</button>
+    </header>
+
+    <!-- Title -->
+    <section class="text-center mt-10">
+        <h2 class="text-4xl font-bold">Illustrator Gallery</h2>
+        <p class="text-gray-400 mt-2">My vector design work created in Adobe Illustrator.</p>
+    </section>
+
+    <!-- Gallery -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-8 p-10">
+        <div class="rounded-lg overflow-hidden shadow-lg hover:scale-105 transition"
+            onclick="openLightbox('illustrator1.jpg')">
+            <img src="illustrator1.jpg" alt="Illustrator Project 1">
+        </div>
+        <div class="rounded-lg overflow-hidden shadow-lg hover:scale-105 transition"
+            onclick="openLightbox('illustrator2.jpg')">
+            <img src="illustrator2.jpg" alt="Illustrator Project 2">
+        </div>
+        <!--
+        <div class="rounded-lg overflow-hidden shadow-lg hover:scale-105 transition"
+            onclick="openLightbox('illustrator3.jpg')">
+            <img src="illustrator3.jpg" alt="Illustrator Project 3">
+        </div>
+        -->
+
+        <!-- ✅ Lightbox Overlay (popup container) -->
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <img id="lightbox-img" src="">
+        </div>
+    </section>
+
+    <!-- Back Button -->
+    <div class="text-center mb-10">
+        <button onclick="location.href='index.html'"
+            class="bg-blue-500 px-6 py-3 rounded-lg shadow-lg hover:bg-blue-600">
+            ⬅ Back to Portfolio
+        </button>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('bg-white');
+            document.body.classList.toggle('text-black');
+        }
+
+        /* ✅ Function to open lightbox with selected image */
+        function openLightbox(src) {
+            document.getElementById('lightbox').style.display = 'flex';
+            document.getElementById('lightbox-img').src = src;
+        }
+
+        /* ✅ Function to close lightbox when clicking outside */
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
+
+</body>
+
+</html>
